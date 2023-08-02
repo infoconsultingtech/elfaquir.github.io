@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+	font-family: Helvetica;
+	color: black;
+}
+
+
+
+.bgimage span{
+  display: inline-block;
+  overflow: hidden;
+  animation: .3s swift-up ease-in-out forwards;	
+}
+
+.bgimage i{
+  font-style: normal;
+  position: relative;
+  top: 55px;
+  animation: .5s swift-up ease-in-out forwards;
+}
+
+@keyframes swift-up {
+  to {
+    top: 0;
+  }
+}
+
+    </style>
+</head>
+<body>
+ <div class="bgimage">
+		<p class="desc_title">It's more fun to be a pirate than to join the Navy.
+    </p>
+</div>
+
+
+
+        <script>
+            const swiftUpElements = document.querySelectorAll('.desc_title');
+
+swiftUpElements.forEach(elem => {
+
+	const words = elem.textContent.split(' ');
+	elem.innerHTML = '';
+
+	words.forEach((el, index) => {
+		words[index] = `<span><i>${words[index]}</i></span>`;
+	});
+
+	elem.innerHTML = words.join(' ');
+
+	const children = document.querySelectorAll('span > i');
+	children.forEach((node, index) => {
+		node.style.animationDelay = `${index * .2}s`;
+	});
+
+});
+        </script>
+</body>
+</html>
